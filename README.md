@@ -61,6 +61,7 @@ sf plugins
 - [`sf project deploy pipeline resume`](#sf-project-deploy-pipeline-resume)
 - [`sf project deploy pipeline start`](#sf-project-deploy-pipeline-start)
 - [`sf project deploy pipeline validate`](#sf-project-deploy-pipeline-validate)
+- [`sf project workitem create`](#sf-project-workitem-create)
 
 ## `sf project deploy pipeline quick`
 
@@ -442,6 +443,47 @@ FLAG DESCRIPTIONS
 ```
 
 _See code: [src/commands/project/deploy/pipeline/validate.ts](https://github.com/salesforcecli/plugin-devops-center/blob/1.2.24/src/commands/project/deploy/pipeline/validate.ts)_
+
+## `sf project workitem create`
+
+The `sf project workitem create` command simplifies the creation of Work Items in Salesforce DevOps Center by allowing you to create them directly from the CLI, including options to assign them to specific users, connect them to development environments, or automatically create feature branches.
+
+```
+USAGE
+  $ sf project workitem create -s <value> -c <value> -p <value> [--json] [-e <value>] [-a <value>]
+
+FLAGS
+  -a, --assigned-to=<value>                 Assigns the Work Item to a specific user.
+  -c, --devops-center-username=<value>      (required) The username or alias of the DevOps Center organization.
+  -e, --development-environment=<value>     The target development environment to connect the Work Item.
+  -p, --devops-center-project-name=<value>  (required) The name of the DevOps Center project.
+  -s, --subject=<value>                     (required) The subject of the created Work Item.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+DESCRIPTION
+  The `sf project workitem create` command simplifies the creation of Work Items in Salesforce DevOps Center by allowing
+  you to create them directly from the CLI, including options to assign them to specific users, connect them to
+  development environments, or automatically create feature branches.
+
+  This command eliminates the need for manual navigation through the DevOps Center UI by enabling the creation of Work
+  Items via a CLI command. It can create a Work Item for a specified project, assign it to a specific user, connect it
+  to a development environment, or generate a new feature branch if no environment is specified. This streamlines the
+  development process and saves time, especially for frequent tasks like creating new features or assigning bug fixes to
+  team members.
+
+EXAMPLES
+  $ sf project workitem create --subject "Implement OAuth2 authentication" --devops-center-username myDevOpsOrg --devops-center-project-name "Security Enhancements"
+
+  $ sf project workitem create --subject "Fix null pointer exception on login" --devops-center-username myDevOpsOrg --devops-center-project-name "Bug Fixes" --assigned-to jane.doe@example.com
+
+  $ sf project workitem create --subject "Update API versioning strategy" --devops-center-username myDevOpsOrg --devops-center-project-name "API Development" --development-environment "Dev Environment 2"
+
+  $ sf project workitem create --subject "Optimize database queries" --devops-center-username myDevOpsOrg --devops-center-project-name "Performance Improvements" --assigned-to alex.smith@example.com --development-environment "Performance Lab"
+```
+
+_See code: [src/commands/project/workitem/create.ts](https://github.com/salesforcecli/plugin-devops-center/blob/1.2.24/src/commands/project/workitem/create.ts)_
 
 <!-- commandsstop -->
 
