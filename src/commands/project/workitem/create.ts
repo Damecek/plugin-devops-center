@@ -20,19 +20,37 @@ export default class ProjectWorkitemCreate extends SfCommand<ProjectWorkitemCrea
   public static readonly examples = messages.getMessages('examples');
 
   public static readonly flags = {
-    name: Flags.string({
-      summary: messages.getMessage('flags.name.summary'),
-      description: messages.getMessage('flags.name.description'),
-      char: 'n',
-      required: false,
+    subject: Flags.string({
+      summary: messages.getMessage('flags.subject.summary'),
+      char: 's',
+      required: true,
+    }),
+    'devops-center-username': Flags.string({
+      summary: messages.getMessage('flags.devops-center-username.summary'),
+      char: 'c',
+      required: true,
+    }),
+    'devops-center-project-name': Flags.string({
+      summary: messages.getMessage('flags.devops-center-project-name.summary'),
+      char: 'p',
+      required: true,
+    }),
+    'development-environment': Flags.string({
+      summary: messages.getMessage('flags.development-environment.summary'),
+      char: 'e',
+    }),
+    'assigned-to': Flags.string({
+      summary: messages.getMessage('flags.assigned-to.summary'),
+      char: 'a',
     }),
   };
 
   public async run(): Promise<ProjectWorkitemCreateResult> {
     const { flags } = await this.parse(ProjectWorkitemCreate);
 
-    const name = flags.name ?? 'world';
-    this.log(`hello ${name} from src/commands/project/workitem/create.ts`);
+    this.log(
+      `subject: ${flags.subject}\ndevops-center-username: ${flags['devops-center-username']}\ndevops-center-project-name: ${flags['devops-center-project-name']}`
+    );
     return {
       path: 'src/commands/project/workitem/create.ts',
     };
