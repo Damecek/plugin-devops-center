@@ -72,6 +72,9 @@
                 "description": "Commands to deploy metadata from a pipeline stage to a Salesforce org."
               }
             }
+          },
+          "workitem": {
+            "description": "Commands to create and manage work items in a project."
           }
         }
       }
