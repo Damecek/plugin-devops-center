@@ -64,5 +64,20 @@
     "alias": [],
     "flagChars": ["a", "b", "c", "l", "p", "t", "v", "w"],
     "flagAliases": []
+  },
+  {
+    "alias": [],
+    "command": "project:workitem:create",
+    "flagAliases": [],
+    "flagChars": ["a", "c", "e", "p", "s"],
+    "flags": [
+      "assigned-to",
+      "development-environment",
+      "devops-center-project-name",
+      "devops-center-username",
+      "json",
+      "subject"
+    ],
+    "plugin": "@salesforce/plugin-devops-center"
   }
 ]
